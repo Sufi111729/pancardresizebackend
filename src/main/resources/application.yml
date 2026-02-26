@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 12MB
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=200,expireAfterWrite=10m
+app:
+  temp-dir: ${APP_TEMP_DIR:${java.io.tmpdir}/pan-resizer}
+  cleanup-minutes: ${APP_CLEANUP_MINUTES:30}
+  cors-allowed-origins: ${APP_CORS_ALLOWED_ORIGINS:http://localhost:5173,http://127.0.0.1:5173}
+  upload:
+    max-per-file-bytes: ${APP_MAX_FILE_BYTES:5242880}
+    max-total-bytes: ${APP_MAX_TOTAL_BYTES:10485760}
